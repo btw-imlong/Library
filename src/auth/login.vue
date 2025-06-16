@@ -26,7 +26,7 @@
         <div class="flex flex-col items-center text-center gap-6">
           <img
             class="w-64 h-64 object-cover rounded-full"
-            src="file:///home/long/Downloads/image%205.png"
+            :src="img"
             alt="Library"
           />
           <p class="text-2xl font-semibold leading-relaxed">
@@ -101,6 +101,7 @@
 <script setup>
 import { ref } from "vue";
 import videoFile from "../img/700_F_1464249674_ezN3nyNaBVMmq4yVqDZxMNA6RDkzkYWl_ST.mp4";
+import img from "../img/image.png";
 
 const email = ref("");
 const password = ref("");
