@@ -1,9 +1,23 @@
+<!-- App.vue or MainLayout.vue -->
 <template>
-  <div>
-    <nav class="p-4 bg-gray-800 text-white">
-      <router-link class="mr-4" to="/">Home</router-link>
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view />
+  <div class="min-h-screen flex flex-col">
+    <!-- Navbar at the top -->
+    <Navbar />
+
+    <!-- Main layout: Sidebar + Routed content -->
+    <div class="flex flex-1">
+      <!-- Sidebar/Dashboard -->
+      <dashboard class="shrink-0" />
+
+      <!-- Routed Page Content -->
+      <div class="flex-1">
+        <router-view />
+      </div>
+    </div>
   </div>
 </template>
+
+<script setup>
+import Navbar from "./layout/navbar.vue";
+import dashboard from "./layout/dashboard.vue";
+</script>
