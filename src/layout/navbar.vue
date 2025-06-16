@@ -5,7 +5,7 @@
         <img :src="img" alt="Library Logo" class="h-8 w-8" />
         <span class="md:text-lg font-semibold">Library Management System</span>
       </router-link>
-      <router-link class="flex items-center space-x-5" to="/about">
+      <router-link class="flex items-center space-x-5" to="/login">
         <img :src="user" alt="Library Logo" class="h-8 w-8" />
         <span class="text-lg font-semibold md:block hidden">Welcome,Admin</span>
       </router-link>
