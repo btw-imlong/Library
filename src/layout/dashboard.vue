@@ -4,7 +4,7 @@
       <section class="text-center p-6">
         <h1 class="text-4xl font-bold text-white">Dash Board</h1>
       </section>
-      <div class="flex flex-col gap-2">
+      <div class="flex flex-col">
         <router-link to="/">
           <section
             class="flex hover:bg-white text-white hover:text-black border-b-2 items-end px-6 p-3 transition duration-300 space-x-8"
