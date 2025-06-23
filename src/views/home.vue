@@ -6,7 +6,7 @@
         <router-link to="" class="text-blue-700">Admid /</router-link> Dashboard
       </p>
     </section>
-    <div class="grid grid-cols-2 gap-x-30 gap-y-20 p-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-30 gap-y-20 p-4">
       <Card :imgSrc="myImage" userName="Logged in user" :userScore="100" />
       <Card :imgSrc="img" userName="Total Book" :userScore="240" />
       <Card :imgSrc="pic" userName="Total Member" :userScore="1234" />

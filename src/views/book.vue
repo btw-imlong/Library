@@ -4,11 +4,13 @@
     <main class="flex-1 p-8 bg-white">
       <!-- Header -->
       <div class="flex justify-end mb-6">
-        <button
-          class="bg-yellow-400 hover:bg-yellow-300 text-black font-bold py-2 px-6 rounded"
-        >
-          New
-        </button>
+        <router-link to="/addbook">
+          <button
+            class="bg-yellow-400 hover:bg-yellow-300 text-black font-bold py-2 px-6 rounded"
+          >
+            New
+          </button>
+        </router-link>
       </div>
 
       <!-- Table -->
