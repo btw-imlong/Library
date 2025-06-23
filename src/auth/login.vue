@@ -39,17 +39,17 @@
         <div
           class="bg-white/30 rounded-2xl backdrop-blur-md text-black w-full max-w-1/2 p-8 space-y-10"
         >
-          <h1 class="text-4xl font-semibold text-center text-slate-900">
+          <h1 class="text-3xl font-semibold text-center text-slate-900">
             Library Management System
           </h1>
-          <h2 class="text-3xl font-semibold text-center text-black/80">
+          <h2 class="text-2xl font-semibold text-center text-black/80">
             Librarian Login Form
           </h2>
 
           <form @submit.prevent="handleLogin" class="space-y-6">
             <!-- Email -->
             <div>
-              <label class="block text-xl font-medium mb-2" for="email"
+              <label class="block text-lg font-medium mb-2" for="email"
                 >Email</label
               >
               <input
@@ -57,14 +57,14 @@
                 type="email"
                 id="email"
                 placeholder="you@example.com"
-                class="w-full px-6 py-4 rounded-2xl bg-neutral-100 border border-black text-xl focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                class="w-full px-6 py-3 rounded-2xl bg-neutral-100 border border-black text-xl focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 required
               />
             </div>
 
             <!-- Password -->
             <div>
-              <label class="block text-xl font-medium mb-2" for="password"
+              <label class="block text-lg font-medium mb-2" for="password"
                 >Password</label
               >
               <input
@@ -72,7 +72,7 @@
                 type="password"
                 id="password"
                 placeholder="••••••••"
-                class="w-full px-6 py-4 rounded-2xl bg-neutral-100 border border-black text-xl focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                class="w-full px-6 py-3 rounded-2xl bg-neutral-100 border border-black text-xl focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 required
               />
             </div>
@@ -81,14 +81,14 @@
             <div class="flex justify-between items-center mt-8">
               <button
                 type="submit"
-                class="bg-yellow-400 text-black font-semibold text-lg px-6 py-3 rounded-2xl hover:bg-yellow-300 transition duration-200"
+                class="bg-yellow-400 text-black font-semibold text-sm px-6 py-3 rounded-2xl hover:bg-yellow-300 transition duration-200"
               >
                 Login
               </button>
               <a
                 href="#"
-                class="text-blue-900 text-lg font-semibold hover:underline"
-                >Lost your password?</a
+                class="text-blue-900 text-sm font-semibold hover:underline"
+                >Forget your password ?</a
               >
             </div>
           </form>

@@ -29,12 +29,12 @@
               <td class="py-2 px-4">12345</td>
               <td class="py-2 px-4">
                 <button
-                  class="bg-yellow-400 hover:bg-yellow-300 text-black font-bold py-1 px-3 rounded"
+                  class="bg-yellow-400 hover:bg-yellow-300 text-black text-sm py-1 px-3 rounded"
                 >
                   Edit
                 </button>
                 <button
-                  class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-3 rounded ml-8"
+                  class="bg-red-500 hover:bg-red-600 text-white text-sm py-1 px-2 rounded ml-8"
                 >
                   Delete
                 </button>
