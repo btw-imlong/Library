@@ -9,7 +9,7 @@
       <dashboard v-if="!hideLayout" class="hidden md:block shrink-0 w-64" />
 
       <!-- Routed Page Content -->
-      <div class="flex-1 px-4 md:px-8">
+      <div class="flex-1">
         <router-view />
       </div>
     </div>
