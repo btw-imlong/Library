@@ -130,11 +130,12 @@ const handleLogin = async () => {
       password: password.value,
     });
 
-    // Save token or user info if needed
-    // localStorage.setItem("token", response.data.token);
+    // ✅ Save the token to localStorage
+    const token = response.data.token;
+    localStorage.setItem("token", token);
 
-    // Redirect to home
-    router.push("/home");
+    // ✅ Redirect to books page (adjust if your route is different)
+    router.push("/book");
   } catch (error) {
     if (error.response && error.response.data && error.response.data.message) {
       errorMessage.value = error.response.data.message;

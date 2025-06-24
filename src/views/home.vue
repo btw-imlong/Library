@@ -1,68 +1,105 @@
 <template>
-  <div class="p-4">
-    <section class="p-4 space-y-2">
-      <h1 class="text-2xl font-semibold">Welcome to Dashboard</h1>
-      <p>
-        <router-link to="" class="text-blue-700">Admid /</router-link> Dashboard
+  <div
+    class="p-6 bg-gradient-to-b from-indigo-100 via-emerald-50 to-white min-h-screen"
+  >
+    <section class="mb-8">
+      <h1 class="text-3xl font-extrabold text-indigo-700 mb-1">
+        Welcome to Dashboard
+      </h1>
+      <p class="text-gray-600">
+        <router-link to="" class="text-indigo-600 hover:underline"
+          >Admin /</router-link
+        >
+        Dashboard
       </p>
     </section>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-30 gap-y-20 p-4">
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
       <Card :imgSrc="myImage" userName="Logged in user" :userScore="100" />
-      <Card :imgSrc="img" userName="Total Book" :userScore="240" />
-      <Card :imgSrc="pic" userName="Total Member" :userScore="1234" />
+      <Card :imgSrc="img" userName="Total Book" :userScore="books.length" />
+      <Card
+        :imgSrc="pic"
+        userName="Total Member"
+        :userScore="students.length"
+      />
       <Card :imgSrc="person" userName="Logged in user" :userScore="10" />
     </div>
 
-    <div class="p-6 space-y-12">
+    <div class="space-y-16 max-w-7xl mx-auto">
       <!-- Student Detail Table -->
-      <div>
-        <h2 class="text-2xl font-bold mb-4">Student Detail</h2>
-        <table class="min-w-full border border-gray-300">
-          <thead class="bg-blue-500 text-white">
+      <div class="bg-white rounded-2xl shadow-lg p-6">
+        <h2 class="text-2xl font-bold text-indigo-700 mb-6">Student Detail</h2>
+        <table
+          class="min-w-full table-auto border-collapse border border-gray-300 rounded-lg overflow-hidden"
+        >
+          <thead class="bg-indigo-600 text-white">
             <tr>
-              <th class="p-2 border">Student ID</th>
-              <th class="p-2 border">Name</th>
-              <th class="p-2 border">Gender</th>
-              <th class="p-2 border">Class</th>
+              <th class="p-3 border border-indigo-500">Student ID</th>
+              <th class="p-3 border border-indigo-500">Name</th>
+              <th class="p-3 border border-indigo-500">Gender</th>
+              <th class="p-3 border border-indigo-500">Class</th>
             </tr>
           </thead>
           <tbody>
             <tr
               v-for="student in students"
               :key="student.id"
-              class="text-center hover:bg-gray-50"
+              class="text-center hover:bg-indigo-50 transition"
             >
-              <td class="p-2 border">{{ student.id }}</td>
-              <td class="p-2 border">{{ student.name }}</td>
-              <td class="p-2 border">{{ student.gender }}</td>
-              <td class="p-2 border">{{ student.class }}</td>
+              <td class="p-3 border border-indigo-300 font-medium">
+                {{ student.id_card || student.student_id || student.id }}
+              </td>
+              <td class="p-3 border border-indigo-300">
+                {{ student.full_name || student.name }}
+              </td>
+              <td class="p-3 border border-indigo-300">
+                {{ student.gender || "-" }}
+              </td>
+              <td class="p-3 border border-indigo-300">
+                {{ student.class || "-" }}
+              </td>
             </tr>
           </tbody>
         </table>
       </div>
 
       <!-- Book Detail Table -->
-      <div>
-        <h2 class="text-2xl font-bold mb-4">Book Detail</h2>
-        <table class="min-w-full border border-gray-300">
-          <thead class="bg-blue-500 text-white">
+      <div class="bg-white rounded-2xl shadow-lg p-6">
+        <h2 class="text-2xl font-bold text-indigo-700 mb-6">Book Detail</h2>
+        <table
+          class="min-w-full table-auto border-collapse border border-gray-300 rounded-lg overflow-hidden"
+        >
+          <thead class="bg-indigo-600 text-white">
             <tr>
-              <th class="p-2 border">Book ID</th>
-              <th class="p-2 border">Title</th>
-              <th class="p-2 border">Author</th>
-              <th class="p-2 border">Status</th>
+              <th class="p-3 border border-indigo-500">Book ID</th>
+              <th class="p-3 border border-indigo-500">Title</th>
+              <th class="p-3 border border-indigo-500">Author</th>
+              <th class="p-3 border border-indigo-500">Status</th>
             </tr>
           </thead>
           <tbody>
             <tr
               v-for="book in books"
               :key="book.id"
-              class="text-center hover:bg-gray-50"
+              class="text-center hover:bg-indigo-50 transition"
             >
-              <td class="p-2 border">{{ book.id }}</td>
-              <td class="p-2 border">{{ book.title }}</td>
-              <td class="p-2 border">{{ book.author }}</td>
-              <td class="p-2 border">{{ book.status }}</td>
+              <td class="p-3 border border-indigo-300 font-medium">
+                {{ book.id }}
+              </td>
+              <td class="p-3 border border-indigo-300">{{ book.title }}</td>
+              <td class="p-3 border border-indigo-300">
+                {{ book.author_name || book.author }}
+              </td>
+              <td class="p-3 border border-indigo-300">
+                <span
+                  :class="{
+                    'text-green-600 font-semibold': book.status === 'Available',
+                    'text-red-600 font-semibold': book.status === 'Borrowed',
+                  }"
+                >
+                  {{ book.status }}
+                </span>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -70,35 +107,52 @@
     </div>
   </div>
 </template>
-<script setup>
-const students = [
-  { id: "S001", name: "Sokchea", gender: "Male", class: "10A" },
-  { id: "S002", name: "Sophea", gender: "Female", class: "10B" },
-  { id: "S003", name: "Vireak", gender: "Male", class: "10A" },
-  { id: "S004", name: "Dara", gender: "Male", class: "10C" },
-  { id: "S005", name: "Rachana", gender: "Female", class: "10B" },
-];
 
-const books = [
-  {
-    id: "B001",
-    title: "Intro to Vue",
-    author: "Chan Dara",
-    status: "Available",
-  },
-  { id: "B002", title: "Mastering JS", author: "Sokun", status: "Borrowed" },
-  { id: "B003", title: "Learn HTML", author: "Phirun", status: "Available" },
-  { id: "B004", title: "CSS Design", author: "Sreypov", status: "Borrowed" },
-  {
-    id: "B005",
-    title: "Tailwind Tips",
-    author: "Rothana",
-    status: "Available",
-  },
-];
+<script setup>
+import { ref, onMounted } from "vue";
+import axios from "axios";
+
 import Card from "../components/weight-card.vue";
 import pic from "../img/people.png";
 import img from "../img/book.png";
 import person from "../img/person.png";
 import myImage from "../img/navbar_pic.png";
+
+const students = ref([]);
+const books = ref([]);
+
+const fetchStudents = async () => {
+  try {
+    const token = localStorage.getItem("token");
+    if (!token) throw new Error("No token found");
+
+    const res = await axios.get("http://localhost:3000/api/students", {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    students.value = res.data.students || res.data || [];
+  } catch (err) {
+    console.error("Failed to fetch students:", err.message);
+  }
+};
+
+const fetchBooks = async () => {
+  try {
+    const token = localStorage.getItem("token");
+    if (!token) throw new Error("No token found");
+
+    const res = await axios.get("http://localhost:3000/api/books", {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+
+    books.value = res.data.books || res.data || [];
+  } catch (err) {
+    console.error("Failed to fetch books:", err.message);
+  }
+};
+
+onMounted(() => {
+  fetchStudents();
+  fetchBooks();
+});
 </script>
