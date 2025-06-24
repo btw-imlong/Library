@@ -49,24 +49,35 @@
         >
       </div>
 
-      <div class="relative">
-        <input
-          type="text"
-          id="grade"
-          class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-          placeholder=" "
-        />
-        <label
-          for="grade"
-          class="absolute text-sm text-gray-500 duration-300 transform scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-4 peer-focus:scale-75 peer-focus:-translate-y-4 left-2"
-          >Class / Grade</label
-        >
+      <div>
+        <div>
+          <div class="relative">
+            <select
+              id="Class/Grande"
+              class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            >
+              <option value="" disabled selected hidden></option>
+
+              <option>WMAD</option>
+              <option>Sales</option>
+              <option>Accounting</option>
+              <option>Cook</option>
+              <option>Cocktail Shaker</option>
+            </select>
+            <label
+              for="category"
+              class="absolute text-sm text-gray-500 duration-300 transform scale-75 top-0 z-10 origin-[0] bg-white px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-4 peer-focus:scale-75 peer-focus:-translate-y-2 left-2"
+              >Class/Grande</label
+            >
+          </div>
+          ﻿
+        </div>
       </div>
     </div>
   </div>
 
   <!-- Submit Button Centered -->
-  <div class="flex justify-center mt-10">
+  <div class="flex justify-center mt-10 ml-[700px]">
     <button
       class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-10 rounded"
     >
