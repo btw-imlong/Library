@@ -71,20 +71,22 @@
 
         <!-- Grade -->
         <div class="relative">
-          <input
-            v-model="form.grade"
-            type="text"
-            id="grade"
-            required
-            placeholder=" "
+          <select
+            id="Class/Grande"
             class="block w-full px-3 pt-5 pb-2 text-sm text-gray-900 bg-transparent border border-gray-300 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-500 peer"
-          />
-          <label
-            for="grade"
-            class="absolute text-sm text-gray-500 bg-white px-1 transition-all duration-300 transform scale-75 top-1.5 z-10 origin-[0] left-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-4 peer-focus:scale-75 peer-focus:-translate-y-1.5"
           >
-            Class / Grade
-          </label>
+            <option value="" disabled selected hidden></option>
+            <option>WMAD</option>
+            <option>Accounting</option>
+            <option>Sales</option>
+            <option>Cocktail sharker</option>
+            <option>Makating</option>
+          </select>
+          <label
+            for="Class/Grande"
+            class="absolute text-sm text-gray-500 bg-white px-1 transition-all duration-300 transform scale-75 top-1.5 z-10 origin-[0] left-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-4 peer-focus:scale-75 peer-focus:-translate-y-1.5"
+            >Class/Grande</label
+          >
         </div>
 
         <!-- Submit button -->
