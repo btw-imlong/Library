@@ -33,63 +33,48 @@
           </label>
         </div>
 
-        <!-- Student ID -->
+        <!-- ID Card -->
         <div class="relative">
           <input
-            v-model="form.student_id"
+            v-model="form.id_card"
             type="text"
-            id="student_id"
+            id="id_card"
             required
             placeholder=" "
             class="block w-full px-3 pt-5 pb-2 text-sm text-gray-900 bg-transparent border border-gray-300 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-500 peer"
           />
           <label
-            for="student_id"
+            for="id_card"
             class="absolute text-sm text-gray-500 bg-white px-1 transition-all duration-300 transform scale-75 top-1.5 z-10 origin-[0] left-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-4 peer-focus:scale-75 peer-focus:-translate-y-1.5"
           >
-            Student ID
+            ID Card
           </label>
         </div>
 
-        <!-- Email -->
-        <div class="relative">
-          <input
-            v-model="form.email"
-            type="email"
-            id="email"
-            required
-            placeholder=" "
-            class="block w-full px-3 pt-5 pb-2 text-sm text-gray-900 bg-transparent border border-gray-300 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-500 peer"
-          />
-          <label
-            for="email"
-            class="absolute text-sm text-gray-500 bg-white px-1 transition-all duration-300 transform scale-75 top-1.5 z-10 origin-[0] left-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-4 peer-focus:scale-75 peer-focus:-translate-y-1.5"
-          >
-            Email
-          </label>
-        </div>
-
-        <!-- Grade -->
+        <!-- Student Class -->
         <div class="relative">
           <select
-            id="Class/Grande"
+            v-model="form.student_class"
+            id="student_class"
+            required
             class="block w-full px-3 pt-5 pb-2 text-sm text-gray-900 bg-transparent border border-gray-300 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-500 peer"
           >
-            <option value="" disabled selected hidden></option>
-            <option>WMAD</option>
-            <option>Accounting</option>
-            <option>Sales</option>
-            <option>Cocktail sharker</option>
-            <option>Makating</option>
+            <option value="" disabled hidden>Select Class</option>
+            <option>wmad</option>
+            <option>accounting</option>
+            <option>sales</option>
+            <option>cocktail sharker</option>
+            <option>makating</option>
           </select>
           <label
-            for="Class/Grande"
+            for="student_class"
             class="absolute text-sm text-gray-500 bg-white px-1 transition-all duration-300 transform scale-75 top-1.5 z-10 origin-[0] left-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-4 peer-focus:scale-75 peer-focus:-translate-y-1.5"
-            >Class/Grande</label
           >
+            Class
+          </label>
         </div>
 
-        <!-- Submit button -->
+        <!-- Submit Button -->
         <div class="col-span-1 md:col-span-2 mt-4 text-center">
           <button
             type="submit"
@@ -115,19 +100,28 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import axios from "axios";
 
 const form = ref({
   full_name: "",
-  student_id: "",
-  email: "",
-  grade: "",
+  id_card: "",
+  student_class: "",
 });
 
 const loading = ref(false);
 const successMessage = ref("");
 const errorMessage = ref("");
+
+// Set token header on mount
+onMounted(() => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  } else {
+    errorMessage.value = "⚠️ No token found. Please login.";
+  }
+});
 
 async function handleSubmit() {
   loading.value = true;
@@ -135,18 +129,11 @@ async function handleSubmit() {
   errorMessage.value = "";
 
   try {
-    const token = localStorage.getItem("token");
-    if (!token) throw new Error("No token found. Please login.");
-
-    await axios.post("http://localhost:3000/api/students", form.value, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-
+    await axios.post("http://localhost:3000/api/students", form.value);
     successMessage.value = "✅ Student created successfully!";
-    form.value = { full_name: "", student_id: "", email: "", grade: "" };
+    form.value = { full_name: "", id_card: "", student_class: "" };
   } catch (err) {
+    console.error("Submit Error:", err.response?.data || err.message);
     errorMessage.value =
       err.response?.data?.message || "❌ Failed to create student.";
   } finally {
@@ -154,3 +141,7 @@ async function handleSubmit() {
   }
 }
 </script>
+
+<style scoped>
+/* Add custom styling if needed */
+</style>
