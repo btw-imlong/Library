@@ -71,4 +71,7 @@ The system ensures reliability, accuracy, and efficiency, whether used by a sing
 ```bash
 git clone https://github.com/btw-imlong/Library
 ```
+<<<<<<< HEAD
 
+=======
+>>>>>>> d6108b0 (edit dashboard)

@@ -15,14 +15,10 @@
     </section>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-      <Card :imgSrc="myImage" userName="Logged in user" :userScore="100" />
-      <Card :imgSrc="img" userName="Total Book" :userScore="books.length" />
-      <Card
-        :imgSrc="pic"
-        userName="Total Member"
-        :userScore="students.length"
-      />
-      <Card :imgSrc="person" userName="Logged in user" :userScore="10" />
+      <Card :imgSrc="myImage" userName="Total Books" :userScore="100" />
+      <Card :imgSrc="img" userName="Total Student" :userScore="10" />
+      <Card :imgSrc="pic" userName="borrowed not returned" :userScore="5" />
+      <Card :imgSrc="person" userName="Returned" :userScore="5" />
     </div>
 
     <div class="space-y-16 max-w-7xl mx-auto">
